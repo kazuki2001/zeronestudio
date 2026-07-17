@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terminal 21 Tokyo Zone — Zerone Studio</title>
+<meta name="description" content="A cinematic travel film introducing Japanese-inspired architecture and cultural elements inside Terminal 21 Pattaya.">
+<meta property="og:title" content="Terminal 21 Tokyo Zone — Zerone Studio">
+<meta property="og:image" content="../assets/work/terminal21/hero.jpg">
+<meta name="theme-color" content="#0A0A09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A09'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,Helvetica,sans-serif' fill='%23EEECE4' text-anchor='middle'%3E03%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<noscript><style>#curtain{display:none!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<div id="curtain" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Zerone Studio</a>
+    <nav class="main-nav">
+      <ul class="main-nav__list">
+        <li><a class="main-nav__link" href="../index.html#work">Work</a></li>
+        <li><a class="main-nav__link" href="../index.html#services">Services</a></li>
+        <li><a class="main-nav__link" href="../index.html#principles">Principles</a></li>
+        <li><a class="main-nav__link" href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="proj-hero" data-hero>
+    <div class="proj-hero__media">
+      <img src="../assets/work/terminal21/hero.jpg" alt="Terminal 21 Tokyo Zone — cinematic travel film hero still" fetchpriority="high" decoding="async">
+      <video data-lazy autoplay muted loop playsinline poster="../assets/work/terminal21/hero.jpg" data-src="../assets/work/terminal21/hero.mp4"></video>
+    </div>
+    <div class="proj-hero__scrim"></div>
+    <div class="proj-hero__content">
+      <p class="proj-hero__index">Project 03 / 03</p>
+      <h1 class="proj-hero__title">Terminal 21 Tokyo Zone</h1>
+      <p class="proj-hero__cat">Travel / Cultural Film</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="proj-meta reveal">
+      <p class="proj-meta__desc">A cinematic travel film introducing Japanese-inspired architecture and cultural elements inside Terminal 21 Pattaya — a quiet study of pattern, light, and place.</p>
+      <div class="proj-meta__cols">
+        <div class="proj-meta__col">
+          <h3>Role</h3>
+          <ul>
+            <li>Creative Direction</li>
+            <li>Filming</li>
+            <li>Editing</li>
+            <li>Color Grading</li>
+          </ul>
+        </div>
+        <div class="proj-meta__col">
+          <h3>Tools</h3>
+          <ul>
+            <li>Cinema Camera</li>
+            <li>Gimbal Stabilizer</li>
+            <li>DaVinci Resolve</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="proj-gallery">
+      <figure class="reveal-img reveal"><img src="../assets/work/terminal21/gallery-1.jpg" alt="Terminal 21 Tokyo Zone gallery still 1" loading="lazy" decoding="async"></figure>
+      <figure class="reveal-img reveal"><img src="../assets/work/terminal21/gallery-2.jpg" alt="Terminal 21 Tokyo Zone gallery still 2" loading="lazy" decoding="async"></figure>
+      <figure class="reveal-img reveal"><img src="../assets/work/terminal21/gallery-3.jpg" alt="Terminal 21 Tokyo Zone gallery still 3" loading="lazy" decoding="async"></figure>
+      <figure class="reveal-img reveal"><img src="../assets/work/terminal21/gallery-4.jpg" alt="Terminal 21 Tokyo Zone gallery still 4" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <a href="wave-hotel-pattaya.html" class="next-project" data-dark-cursor>
+    <div class="next-project__media"><img src="../assets/work/wave-hotel/thumb.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="next-project__scrim"></div>
+    <div class="next-project__content">
+      <p class="next-project__label">Next Project — 01 / 03</p>
+      <h2 class="next-project__title">Wave Hotel Pattaya</h2>
+    </div>
+  </a>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+    <span>© <span id="year"></span> Zerone Studio</span>
+    <a href="#" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../js/main.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
