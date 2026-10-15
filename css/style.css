@@ -803,51 +803,187 @@ section { position: relative; }
 /* hidden 属性を確実に効かせる（display 指定のあるクラスより優先） */
 [hidden] { display: none !important; }
 
-/* ---------- Brand ring — hero background signature ---------- */
-.hero__ring {
-  --ring-size: 65vmin;
-  --ring-x: 78%;
-  --ring-y: 72%;
-  --ring-core: 38%;
-  --ring-peak: 56%;
-  --ring-fade: 76%;
-  --ring-dark: 0.4;
-  --ring-blur: 24px;
+/* ---------- Brand core — "A Quiet Universe." ----------
+   点描の日食を白背景向けに明暗反転して抽象化した、ヒーローの視覚的シグネチャ。
+     .hero__ring         … 光る核（背景よりわずかに明るい白い円。縁はシャープ）
+     .hero__ring::before … 縁を締めるごく淡い 1px の線
+     .hero__ring::after  … 点描のコロナと遠くの星（assets/brand/core-stipple*.svg）
+   --core-r = 核の半径。点描は核の外側 約0.35R まで密に広がり、星は 1.55R までに収まる。
+   円の全体像（星まで）が常に画面内に収まるよう、半径は画面の高さと幅の両方から決める。
+   構図はヒーローのクラスで切り替える：hero--a（中央配置）/ hero--b（中央からずらした配置） */
+.hero--a,
+.hero--b {
+  --core-r: clamp(104px, 19svh, 230px);
+}
+/* 高さに余裕のある PC（800px以上）では、円を約5%大きく。低いノートPCは余白とボタン位置を優先して据え置き */
+@media (min-width: 801px) and (min-height: 800px) {
+  .hero--a,
+  .hero--b { --core-r: clamp(104px, 19.95svh, 242px); }
+}
+@media (max-width: 800px) {
+  /* スマホは画面幅の27%：コロナの外側に左右50px前後の余白が残る */
+  .hero--a,
+  .hero--b { --core-r: clamp(92px, min(20svh, 27vw), 140px); }
+}
 
-  position: absolute;
-  left: var(--ring-x);
-  top: var(--ring-y);
-  z-index: 1; /* .hero__frame (z-index:2) の下 */
-  width: var(--ring-size);
+.hero__core { position: relative; }
+.hero__ring {
+  position: relative;
+  width: calc(var(--core-r) * 2);
   aspect-ratio: 1 / 1;
-  transform: translate(-50%, -50%);
   border-radius: 50%;
+  background: #fff;
   pointer-events: none;
-  background: radial-gradient(circle closest-side,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) var(--ring-core),
-    rgba(10, 10, 9, var(--ring-dark)) var(--ring-peak),
-    rgba(10, 10, 9, 0) var(--ring-fade));
-  filter: blur(var(--ring-blur));
-  animation: ringBreathe 10s ease-in-out infinite;
-  will-change: scale;
 }
-@keyframes ringBreathe {
-  0%, 100% { scale: 1; }
-  50% { scale: 1.03; }
+.hero__ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 17, 16, 0.22);
 }
-@media (max-width: 768px) {
-  /* 中央のテキストとボタンにかからないよう右下へ逃がし、少し薄く */
-  .hero__ring {
-    --ring-size: 82vmin;
-    --ring-x: 94%;
-    --ring-y: 96%;
-    --ring-dark: 0.3;
-    --ring-blur: 20px;
+.hero__ring::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--core-r) * -0.7241); /* 核の縁が、この層の半径の58%地点に来る */
+  background:
+    url("../assets/brand/core-stipple.svg") center / 100% 100% no-repeat,
+    radial-gradient(circle closest-side,
+      transparent 57.9%,
+      rgba(17, 17, 16, 0.03) 58%,
+      rgba(17, 17, 16, 0) 66%);
+  animation: coreBreath 12s ease-in-out infinite;
+}
+@media (max-width: 800px) {
+  .hero__ring::after {
+    background-image:
+      url("../assets/brand/core-stipple-sp.svg"),
+      radial-gradient(circle closest-side, transparent 57.9%, rgba(17, 17, 16, 0.03) 58%, rgba(17, 17, 16, 0) 66%);
   }
 }
+/* 呼吸：点描のコロナがごくわずかに広がって戻る。核そのものは動かさない */
+@keyframes coreBreath {
+  0%, 100% { scale: 1;     opacity: 0.9; }
+  50%      { scale: 1.014; opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero__ring { animation: none; }
+  .hero__ring::after { animation: none; opacity: 1; }
+}
+
+/* ===== 案A：中央配置 — 見出しを光る核の中に置き、円の全体像を中心に据える ===== */
+.hero--a .hero__rule { display: none; }
+.hero--a .hero__mark { margin-bottom: calc(var(--core-r) * 0.4 + 1rem); }
+.hero--a .hero__core {
+  width: calc(var(--core-r) * 2);
+  height: calc(var(--core-r) * 2);
+  display: grid;
+  place-items: center;
+}
+.hero--a .hero__ring { position: absolute; inset: 0; }
+.hero--a .hero__tagline {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1rem, calc(var(--core-r) * 0.142), 1.75rem);
+}
+.hero--a .hero__sub { margin-top: calc(var(--core-r) * 0.4 + 1rem); }
+.hero--a .hero__cta { margin-top: 1.75rem; }
+
+/* SCROLL 表示は円の構図を邪魔しないよう、画面の下端に寄せて短くする */
+.hero--a .hero__scrollcue,
+.hero--b .hero__scrollcue { bottom: clamp(1.25rem, 3svh, 2.5rem); gap: 0.6em; }
+.hero--a .hero__scrollcue-line,
+.hero--b .hero__scrollcue-line { height: 24px; }
+/* 円と文字を両方収めると高さが足りない画面では、SCROLL 表示を出さない */
+@media (max-height: 760px) {
+  .hero--a .hero__scrollcue { display: none; }
+}
+@media (max-width: 900px) and (max-height: 760px) {
+  .hero--b .hero__scrollcue { display: none; }
+}
+/* /business：日本語リードが長いため、余白とリードの横幅を整えて最初の画面に収める
+   （.hero.hero--a と二重に指定し、後方にある .page-business .hero の余白指定より優先させる） */
+.page-business .hero.hero--a,
+.page-business .hero.hero--b { padding: 4.5rem 0 3.5rem; }
+@media (min-width: 801px) {
+  .page-business .hero--a .hero__sub { max-width: 38em; }
+}
+@media (min-width: 801px) and (max-height: 760px) {
+  .page-business .hero.hero--a { padding: 3.75rem 0 2.5rem; }
+}
+/* /business は日本語リードのぶん内容が長いため、高さ960px以下では SCROLL 表示を出さない */
+@media (max-height: 960px) {
+  .page-business .hero--a .hero__scrollcue { display: none; }
+}
+/* /business のスマホ：問い合わせにつながるボタンを最初の画面に収める。
+   上下の余白と円まわりの間隔を少し詰め、リードを15pxに、ボタンを横並びに */
+@media (max-width: 800px) {
+  .page-business .hero.hero--a { padding: 4rem 0 2.5rem; }
+  .page-business .hero--a .hero__mark { margin-bottom: calc(var(--core-r) * 0.36 + 0.75rem); }
+  .page-business .hero--a .hero__sub {
+    margin-top: calc(var(--core-r) * 0.36 + 0.75rem);
+    font-size: 0.9375rem;
+    line-height: 1.75;
+  }
+  .page-business .hero--a .hero__cta { margin-top: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .page-business .hero--a .hero__cta { flex-direction: row; width: auto; max-width: none; gap: 0.75rem; }
+  .page-business .hero--a .hero__cta .btn { width: auto; }
+}
+/* 高さの低いスマホ（iPhone SE など）：円の全体像を保ったまま、半径を高さに合わせて少しだけ小さく */
+@media (max-width: 800px) and (max-height: 700px) {
+  .page-business .hero--a { --core-r: clamp(84px, 13.5svh, 140px); }
+}
+
+/* ===== 案B：中央からずらした配置 ===== */
+.hero--b .hero__core { display: contents; }
+.hero--b .hero__tagline { position: relative; z-index: 1; }
+/* PC：文字を左の列（左揃え）、円を右の列に。全体は画面中央でまとまり、円の中心は画面幅の約6〜7割の位置 */
+@media (min-width: 901px) {
+  .hero--b .hero__frame {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr auto auto auto auto auto 1fr;
+    grid-template-areas:
+      ".       ring"
+      "rule    ring"
+      "mark    ring"
+      "tagline ring"
+      "sub     ring"
+      "cta     ring"
+      ".       ring";
+    column-gap: calc(var(--core-r) * 0.7 + clamp(2rem, 4vw, 4.5rem));
+    max-width: none;
+    justify-items: start;
+    align-items: start;
+    text-align: left;
+  }
+  .hero--b .hero__ring { grid-area: ring; align-self: center; }
+  .hero--b .hero__rule { grid-area: rule; margin-bottom: 2.5rem; }
+  .hero--b .hero__mark { grid-area: mark; margin-bottom: 2rem; }
+  .hero--b .hero__tagline { grid-area: tagline; }
+  .hero--b .hero__sub { grid-area: sub; margin-top: 2.5rem; }
+  .hero--b .hero__cta { grid-area: cta; margin-top: 2.25rem; justify-content: flex-start; }
+}
+/* 幅 901〜1199px の PC：2列のまま収まるよう、核の半径を画面幅にも合わせる */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .hero--b { --core-r: clamp(104px, min(19svh, 12.5vw), 230px); }
+}
+/* 高さの低いスマホ：円がヘッダーに近づかないよう、核の半径を高さに合わせる */
+@media (max-width: 900px) and (max-height: 700px) {
+  .hero--b { --core-r: clamp(80px, 13svh, 140px); }
+}
+/* スマホ・タブレット：円を上に、文字をその下に中央揃えで */
+@media (max-width: 900px) {
+  .hero--b .hero__ring {
+    order: -1;
+    margin-top: calc(var(--core-r) * 0.35);
+    margin-bottom: calc(var(--core-r) * 0.4 + 1.25rem);
+  }
+  .hero--b .hero__rule { display: none; }
+  .hero--b .hero__mark { margin-bottom: 1.25rem; }
+  .hero--b .hero__sub { margin-top: 1.5rem; }
+  .hero--b .hero__cta { margin-top: 2rem; }
 }
 
 /* ---------- Services → For Business link ---------- */
