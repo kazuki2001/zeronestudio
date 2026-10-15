@@ -42,6 +42,7 @@
 
   <!-- HERO -->
   <section class="hero" data-hero>
+    <div class="hero__ring" aria-hidden="true"></div>
     <div class="hero__frame">
       <span class="hero__rule" aria-hidden="true"></span>
       <p class="eyebrow hero__mark">Zerone Studio</p>
@@ -50,6 +51,11 @@
         <span class="hero__tagline-line">Visual Identities.</span>
         <span class="hero__tagline-line">Digital Experiences.</span>
       </h1>
+      <p class="hero__sub">A creative studio for brands, artists, and digital culture.</p>
+      <div class="hero__cta">
+        <a href="#work" class="btn btn--outline">View Work</a>
+        <a href="#contact" class="btn btn--solid">Start a Project</a>
+      </div>
     </div>
     <div class="hero__scrollcue" aria-hidden="true">
       <span class="hero__scrollcue-line"></span>
@@ -64,46 +70,43 @@
         <h2 class="section-head__title">Selected&nbsp;Work</h2>
       </div>
 
+      <!-- Each work-piece is a self-contained unit — copy this block to add
+           a new project. Increment work-piece__index and add matching
+           assets under assets/work/<slug>/{hero.jpg,hero.mp4}. -->
       <div class="work-gallery">
 
         <a href="work/wave-hotel-pattaya.html" class="work-piece reveal" aria-label="View Wave Hotel Pattaya project">
           <div class="work-piece__frame reveal-img">
-            <video data-lazy autoplay muted loop playsinline poster="assets/work/wave-hotel/hero.jpg" data-src="assets/work/wave-hotel/hero.mp4" aria-label="Wave Hotel Pattaya — cinematic brand film"></video>
+            <video data-lazy autoplay muted loop playsinline poster="assets/work/wave-hotel/hero.jpg" data-src="assets/work/wave-hotel/hero.mp4" aria-label="Wave Hotel Pattaya — Luxury Hotel Film"></video>
           </div>
           <div class="work-piece__caption">
-            <h3 class="work-piece__name">Wave Hotel Pattaya</h3>
+            <h3 class="work-piece__name"><span class="work-piece__index">01</span> Wave Hotel Pattaya</h3>
             <div class="work-piece__meta">
               <span>Luxury Hotel Film</span>
-              <span class="work-piece__dot" aria-hidden="true">·</span>
-              <span>2025</span>
             </div>
           </div>
         </a>
 
         <a href="work/starbucks-pattaya.html" class="work-piece reveal" aria-label="View Starbucks Pattaya project">
           <div class="work-piece__frame reveal-img">
-            <video data-lazy autoplay muted loop playsinline poster="assets/work/starbucks/hero.jpg" data-src="assets/work/starbucks/hero.mp4" aria-label="Starbucks Pattaya — cinematic lifestyle film"></video>
+            <video data-lazy autoplay muted loop playsinline poster="assets/work/starbucks/hero.jpg" data-src="assets/work/starbucks/hero.mp4" aria-label="Starbucks Pattaya — Lifestyle Film"></video>
           </div>
           <div class="work-piece__caption">
-            <h3 class="work-piece__name">Starbucks Pattaya</h3>
+            <h3 class="work-piece__name"><span class="work-piece__index">02</span> Starbucks Pattaya</h3>
             <div class="work-piece__meta">
               <span>Lifestyle Film</span>
-              <span class="work-piece__dot" aria-hidden="true">·</span>
-              <span>2025</span>
             </div>
           </div>
         </a>
 
         <a href="work/terminal21-tokyo-zone.html" class="work-piece reveal" aria-label="View Terminal 21 Tokyo Zone project">
           <div class="work-piece__frame reveal-img">
-            <video data-lazy autoplay muted loop playsinline poster="assets/work/terminal21/hero.jpg" data-src="assets/work/terminal21/hero.mp4" aria-label="Terminal 21 Tokyo Zone — cinematic travel film"></video>
+            <video data-lazy autoplay muted loop playsinline poster="assets/work/terminal21/hero.jpg" data-src="assets/work/terminal21/hero.mp4" aria-label="Terminal 21 Tokyo Zone — Travel / Cultural Film"></video>
           </div>
           <div class="work-piece__caption">
-            <h3 class="work-piece__name">Terminal 21 Tokyo Zone</h3>
+            <h3 class="work-piece__name"><span class="work-piece__index">03</span> Terminal 21 Tokyo Zone</h3>
             <div class="work-piece__meta">
               <span>Travel / Cultural Film</span>
-              <span class="work-piece__dot" aria-hidden="true">·</span>
-              <span>2025</span>
             </div>
           </div>
         </a>
@@ -123,35 +126,41 @@
       <div class="services-list">
         <div class="service-row reveal">
           <span class="service-row__index">01</span>
-          <h3 class="service-row__name">Creative Direction</h3>
-          <p class="service-row__desc">Shaping concept, tone, and vision from first frame to last.</p>
+          <h3 class="service-row__name">Brand Film</h3>
+          <p class="service-row__desc">ブランドの世界観を映像化。</p>
         </div>
         <div class="service-row reveal">
           <span class="service-row__index">02</span>
-          <h3 class="service-row__name">Brand Films</h3>
-          <p class="service-row__desc">Cinematic pieces that define how a brand feels.</p>
+          <h3 class="service-row__name">Social Creative</h3>
+          <p class="service-row__desc">Instagram / TikTok / YouTube Shorts向けの映像制作。</p>
         </div>
         <div class="service-row reveal">
           <span class="service-row__index">03</span>
-          <h3 class="service-row__name">Travel Films</h3>
-          <p class="service-row__desc">Place and culture, told through atmosphere.</p>
+          <h3 class="service-row__name">Advertising</h3>
+          <p class="service-row__desc">SNS広告・デジタル広告向けクリエイティブ。</p>
         </div>
         <div class="service-row reveal">
           <span class="service-row__index">04</span>
-          <h3 class="service-row__name">Lifestyle Content</h3>
-          <p class="service-row__desc">Everyday moments, framed with intention.</p>
+          <h3 class="service-row__name">Visual Identity</h3>
+          <p class="service-row__desc">映像・グラフィック・モーションを含めたビジュアル設計。</p>
         </div>
         <div class="service-row reveal">
           <span class="service-row__index">05</span>
-          <h3 class="service-row__name">Video Editing</h3>
-          <p class="service-row__desc">Rhythm, pacing, and color that carry a story.</p>
+          <h3 class="service-row__name">Creative Direction</h3>
+          <p class="service-row__desc">コンセプト、企画、ビジュアル、制作全体を設計。</p>
         </div>
         <div class="service-row reveal">
           <span class="service-row__index">06</span>
-          <h3 class="service-row__name">Visual Storytelling</h3>
-          <p class="service-row__desc">Every project begins and ends with narrative.</p>
+          <h3 class="service-row__name">Digital Experience</h3>
+          <p class="service-row__desc">Web・映像・音楽を組み合わせたデジタル体験。</p>
         </div>
       </div>
+
+      <a href="business/" class="services-business reveal">
+        <span class="services-business__label">For Business</span>
+        <span class="services-business__desc">企業向けの映像制作・多言語編集・AI自動化</span>
+        <span class="services-business__arrow" aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </section>
 
@@ -191,9 +200,17 @@
     <div class="container">
       <p class="eyebrow reveal">Get In Touch</p>
       <h2 class="contact__title reveal">Let's create something worth remembering.</h2>
-      <div class="contact__row reveal">
+      <div class="contact__row reveal" data-contact-pending>
         <p class="contact__soon">Contact channel opening soon.</p>
         <p class="contact__meta">Our official studio email is being set up — check back shortly.</p>
+      </div>
+      <!-- 問い合わせ先は js/contact.js で設定。未設定のあいだは表示されません -->
+      <div class="contact__row reveal" data-contact-block hidden>
+        <a class="contact__email" data-contact="email" data-contact-text href="#" hidden></a>
+        <div class="contact__actions">
+          <a class="btn btn--solid" data-contact="form" href="#" hidden>Start a Project</a>
+          <a class="contact__biz" href="business/">For Business &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
@@ -203,12 +220,16 @@
 <footer class="site-footer">
   <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
     <span>© <span id="year"></span> Zerone Studio</span>
-    <a href="#" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top</a>
+    <span class="site-footer__links">
+      <a href="business/" class="to-top">For Business</a>
+      <a href="#" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top</a>
+    </span>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/contact.js"></script>
 <script src="js/main.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
