@@ -247,7 +247,25 @@ a:focus-visible, button:focus-visible {
 
 .menu-toggle { display: none; }
 
+/* ヘッダーの問い合わせボタン（Googleフォームへ）。
+   ヘッダーは mix-blend-mode: difference なので currentColor の枠線で描く。 */
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55em 1.1em;
+  border: 1px solid currentColor;
+  font-size: var(--fs-small);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background .4s var(--ease-out), color .4s var(--ease-out);
+}
+.header-cta:hover { background: #fff; color: #000; }
+
 @media (max-width: 800px) {
+  .logo { white-space: nowrap; }
+  .main-nav { gap: 1rem; }
+  .header-cta { padding: 0.45em 0.8em; letter-spacing: 0.04em; }
   .main-nav__list { display: none; }
   .menu-toggle {
     display: inline-flex;
@@ -255,6 +273,14 @@ a:focus-visible, button:focus-visible {
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+}
+/* 幅の狭いスマホでロゴ・問い合わせ・Menu を1行に収める */
+@media (max-width: 400px) {
+  .logo { font-size: 0.8rem; letter-spacing: 0.08em; }
+  .main-nav { gap: 0.75rem; }
+  .header-cta { font-size: 0.7rem; padding: 0.4em 0.6em; }
+  .menu-toggle { font-size: 0.7rem; }
+  .site-header .container { gap: 0.75rem; }
 }
 
 /* ==========================================================================
@@ -728,7 +754,15 @@ section { position: relative; }
   gap: clamp(2rem, 6vw, 8rem);
   border-bottom: 1px solid var(--c-line);
 }
-.proj-meta__cols { display: flex; gap: clamp(2rem, 5vw, 5rem); }
+.proj-hero__type {
+  display: block;
+  margin-top: 0.6em;
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+}
+.proj-meta__cols { display: flex; flex-wrap: wrap; gap: clamp(2rem, 5vw, 5rem); }
 .proj-meta__col h3 {
   font-size: var(--fs-small);
   letter-spacing: 0.1em;
@@ -1239,15 +1273,13 @@ section { position: relative; }
 }
 .biz-contact .btn--solid:hover { background: transparent; color: var(--c-paper-on-dark); }
 .biz-contact .contact__email { color: var(--c-paper-on-dark); }
-.biz-contact__pending {
-  font-weight: 300;
-  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
-}
-.biz-contact__pending-meta {
-  margin-top: var(--sp-xxs);
+.biz-contact__mail {
+  margin-top: var(--sp-xs);
   font-size: var(--fs-small);
+  line-height: 2;
   color: var(--c-ink-soft-on-dark);
 }
+.biz-contact__mail .contact__email { font-size: clamp(1rem, 1.6vw, 1.25rem); }
 @media (max-width: 800px) {
   .biz-contact__grid { grid-template-columns: 1fr; gap: var(--sp-md); }
 }
