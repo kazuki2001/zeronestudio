@@ -9,7 +9,8 @@ ZERONE STUDIO の公式ポートフォリオサイト。映像制作・ブラン
 ```
 zerone-studio/
 ├── index.html                 トップページ（Hero / Work / Services / Principles / Contact）
-├── work/
+├── business/index.html        企業向けページ（Hero / Services / Process / Contact）
+├── work/                      Selected Work（3作品とも自主制作）
 │   ├── wave-hotel-pattaya.html
 │   ├── starbucks-pattaya.html
 │   └── terminal21-tokyo-zone.html
@@ -19,6 +20,13 @@ zerone-studio/
     ├── hero/                  トップページ用画像
     └── work/<project>/        各プロジェクトの hero.mp4 / hero.jpg / thumb.jpg / gallery-*.jpg
 ```
+
+## 問い合わせ先
+
+問い合わせ先は各HTMLに直接記載しています（JavaScriptに依存しません）。変更するときは全ファイルを一括置換してください。
+
+- Googleフォーム：`https://forms.gle/uxtCk1KHb2TxDFdW8`（ヘッダー・ファーストビュー・Contactセクションのボタン）
+- メール：`zeronestudio.office@gmail.com`（トップと /business の Contact セクション）
 
 ## ローカルで確認する
 
